@@ -7,9 +7,13 @@ from models import Doctor
 def index():
     return render_template("index.html")
 
-@app.route("/other")
-def other():
-    return render_template("other.html")
+@app.route("/sign_in")
+def sign_in():
+    return render_template("sign_in.html")
+
+@app.route("/sign_up")
+def sign_up():
+    return render_template("sign_up.html")
 
 @app.route("/doctors")
 def doctors():

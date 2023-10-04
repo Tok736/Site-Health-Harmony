@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctors</title>
-</head>
-<body>
-    <h1>Our doctors</h1>
+{% extends "base.html" %}
 
-    <ul>
-    {% for doctor in doctors %}
-        <li>{{ doctor.first_name }} {{ doctor.second_name }} {{ doctor.age }}</li>
-    {% endfor %}
-    </ul>
-    
+{% block title %} Our doctors {% endblock %}
 
-</body>
-</html>
+{% block h1_text %} Our doctors {% endblock %}
+
+{% block content %}
+<ul>
+{% for doctor in doctors %}
+    <li>{{ doctor.first_name }} {{ doctor.second_name }} {{ doctor.age }}</li>
+{% endfor %}
+</ul>
+{% endblock %}
