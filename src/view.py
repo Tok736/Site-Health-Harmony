@@ -19,3 +19,10 @@ def sign_up():
 def doctors():
     doctors = Doctor.query.all()
     return render_template("doctors.html", doctors=doctors)
+
+@app.route("/doctors/<int:doctor_id>")
+def doctor_page(doctor_id):
+    doctor = Doctor.query.get(doctor_id)
+    return render_template("doctor_page.html", doctor=doctor)
+
+

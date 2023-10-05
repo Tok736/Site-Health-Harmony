@@ -5,9 +5,10 @@
 {% block h1_text %} Our doctors {% endblock %}
 
 {% block content %}
+<h2>Doctors working in our clinic</h2>
 <ul>
 {% for doctor in doctors %}
-    <li>{{ doctor.first_name }} {{ doctor.second_name }} {{ doctor.age }}</li>
+    <li><a href="{{ url_for('doctor_page', doctor_id=doctor.id) }}">{{ doctor.first_name }} {{ doctor.second_name }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}
