@@ -25,4 +25,10 @@ def doctor_page(doctor_id):
     doctor = Doctor.query.get(doctor_id)
     return render_template("doctor_page.html", doctor=doctor)
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
+@app.route("/service")
+def service():
+    return render_template("service.html")

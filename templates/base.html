@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %} - Health Harmony</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{% block page_title %} {% endblock %}</title>
 </head>
-
 <body>
-    <h1>{% block h1_text %}{% endblock %}</h1>
+    <h1>{% block h1_title %} {% endblock %}</h1>
     <ul>
         <li><a href="{{ url_for('index') }}">Main page</a></li>
         <li><a href="{{ url_for('doctors') }}">Our doctors</a></li>
         <li><a href="{{ url_for('sign_in') }}">Sign in</a></li>
         <li><a href="{{ url_for('sign_up') }}">Sign up</a></li>
+        <li><a href="{{ url_for('service') }}">Service</a></li>
+        <li><a href="{{ url_for('about') }}">About us</a></li>
     </ul>
-
-    {% block content %}
-
+    {% block content %} 
     {% endblock %}
 </body>
 </html>
+
+
