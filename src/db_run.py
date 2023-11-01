@@ -8,10 +8,7 @@ with app.app_context():
 
 with app.app_context():
     doctor = Doctor(first_name="Alexandr", second_name="Ivanov", age=47)
-    doctor2 = Doctor(first_name="Vladimir", second_name="Frolov", age=51)
-    doctors = [doctor, doctor2]
-    for d in doctors:
-        db.session.add(d)
+    db.session.add(d)
     db.session.commit()
 
 # with app.app_context():

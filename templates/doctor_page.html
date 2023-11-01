@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %} Our doctors {% endblock %}
+{% block page_title %} {{ super() }} - Doctor {{ doctor.first_name }} {{ doctor.second_name }} {% endblock %}
 
 {% block h1_title %} Doctor {{ doctor.first_name }} {{ doctor.second_name }} {% endblock %}
 
