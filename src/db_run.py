@@ -8,7 +8,7 @@ with app.app_context():
 
 with app.app_context():
     doctor = Doctor(first_name="Alexandr", second_name="Ivanov", age=47)
-    db.session.add(d)
+    db.session.add(doctor)
     db.session.commit()
 
 # with app.app_context():
