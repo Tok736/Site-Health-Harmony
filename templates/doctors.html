@@ -8,7 +8,7 @@
 <h2>Doctors working in our clinic</h2>
 <ul>
 {% for doctor in doctors %}
-    <li><a href="{{ url_for('doctor_page', doctor_id=doctor.id) }}">{{ doctor.first_name }} {{ doctor.second_name }}</a></li>
+    <li><a href="{{ url_for('doctor_page', doctor_id=doctor.id) }}">{{ doctor.user.first_name }} {{ doctor.user.second_name }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}
