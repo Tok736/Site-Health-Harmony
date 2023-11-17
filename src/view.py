@@ -1,7 +1,7 @@
 from flask import render_template
 
-from app import app
-from models import Doctor
+from src.app import app
+from src.models import Doctor
 
 @app.route("/")
 def index():
