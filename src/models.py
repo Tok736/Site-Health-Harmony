@@ -22,3 +22,25 @@ class Doctor(db.Model):
 
     def __repr__(self):
         return f"<Doctor {self.user.first_name} {self.user.second_name}>"
+
+class Service(db.Model):
+    __tablename__ = "service"
+
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text())
+    service_group_id = db.Column(db.ForeignKey("service_group.id"))
+    service_group = db.Relationship("ServiceGroup")
+
+    def __repr__(self):
+        return f"<Service {self.name}>"
+
+class ServiceGroup(db.Model):
+    __tablename__ = "service_group"
+
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text())
+
+    def __repr__(self):
+        return f"<ServiceGroup {self.name}>"

@@ -15,7 +15,4 @@ with app.app_context():
     db.session.add(doctor)
     db.session.commit()
 
-with app.app_context():
-    doctors = Doctor.query.all()
-    print(doctors)
 

@@ -1,6 +1,7 @@
 from app import app
 import view
-import db
+from db import db
+import admin
 
 def main():
     app.run(debug=True)
