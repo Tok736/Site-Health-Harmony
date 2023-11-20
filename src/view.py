@@ -1,7 +1,7 @@
 from flask import render_template
 
 from src.app import app
-from src.models import Doctor
+from src.models import Doctor, Service, ServiceGroup
 
 @app.route("/")
 def index():
@@ -31,4 +31,6 @@ def about():
 
 @app.route("/service")
 def service():
-    return render_template("service.html")
+    services = Service.query.all()
+    service_groups = ServiceGroup.query.all()
+    return render_template("service.html", services=services, service_groups=service_groups)

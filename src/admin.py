@@ -11,4 +11,3 @@ admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Doctor, db.session))
 admin.add_view(ModelView(Service, db.session))
 admin.add_view(ModelView(ServiceGroup, db.session))
-
