@@ -1,7 +1,10 @@
-from flask import render_template
+from flask import render_template, flash
+from werkzeug.security import generate_password_hash
 
-from src.app import app
-from src.models import Doctor, Service, ServiceGroup
+from app import app
+from db import db
+from models import User, Doctor, Service, ServiceGroup
+from forms import SignUpForm
 
 @app.route("/")
 def index():
@@ -11,9 +14,25 @@ def index():
 def sign_in():
     return render_template("sign_in.html")
 
-@app.route("/sign_up")
+@app.route("/sign_up", methods=["GET", "POST"])
 def sign_up():
-    return render_template("sign_up.html")
+    form = SignUpForm()
+
+    if form.validate_on_submit():
+        email = form.email.data
+        password = form.password.data
+        password_repeat = form.password_repeat.data
+        if len(User.query.filter_by(email=email).all()) > 0:
+            flash("Пользователь с таким email уже существует")
+        elif password == password_repeat:
+            u = User(email=email, password_hash=generate_password_hash(password))
+            db.session.add(u)
+            db.session.commit()
+            flash("Регистрация прошла успешно!")
+        else:
+            flash("Пароли должны быть одинаковыми!")
+
+    return render_template("sign_up.html", form=form)
 
 @app.route("/doctors")
 def doctors():

@@ -2,14 +2,16 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Text, DateTime
 from sqlalchemy.sql import func 
 from sqlalchemy.orm import Relationship
 
-from src.db import db
+from db import db
 
 class User(db.Model):
     __tablename__ = "user"
 
     id = Column(Integer, primary_key=True)
-    email = Column(String(100))
-    first_name = Column(String(100), nullable=False)
+    email = Column(String(100), nullable=False)
+    password_hash = Column(String(100))
+
+    first_name = Column(String(100))
     second_name = Column(String(100))
     patronymic = Column(String(100))
     age = Column(Integer)

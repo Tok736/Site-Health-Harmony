@@ -5,23 +5,26 @@
 {% block h1_title %} Sign in {% endblock %}
 
 {% block content %}
+
+{% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+{% endfor %}
+
 <form action="#" method="post">
-    <label for="nickname">Nickname: </label>
+    {{ form.csrf_token }}
+    {{ form.email.label }}
     <br>
-    <input type="text" name="nickname" id="input_nickname_id">
+    {{ form.email(size=50) }}
     <br>
-    <label for="email">Email: </label>
+    {{ form.password.label }}
     <br>
-    <input type="email" name="email" id="input_email_id">
+    {{ form.password(size=50) }}
     <br>
-    <label for="password">Password: </label>
+    {{ form.password_repeat.label }}
     <br>
-    <input type="password" name="password" id="input_password_id">
+    {{ form.password_repeat(size=50) }}
     <br>
-    <label for="repeat_password">Repeat password: </label>
-    <br>
-    <input type="password" name="repeat_password" id="input_repeat_password_id">
-    <br>
+    
     <input type="submit" value="Sign in">
 </form>
 {% endblock %}

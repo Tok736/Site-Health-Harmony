@@ -1,0 +1,5 @@
+{% for s in services %}
+<p>
+    {{ s.name }} - {{ s.description }}. Категория "{{ s.service_group.name }}"
+</p>
+{% endfor %}
