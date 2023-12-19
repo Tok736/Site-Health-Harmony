@@ -1,6 +1,6 @@
-from flask import render_template, flash
+from flask import render_template, flash, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user
+from flask_login import login_user, logout_user, login_required
 
 from app import app
 from db import db
@@ -27,6 +27,12 @@ def sign_in():
             flash("Неправильный логин или пароль")
 
     return render_template("sign_in.html", form=form)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("index"))
 
 @app.route("/sign_up", methods=["GET", "POST"])
 def sign_up():
