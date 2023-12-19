@@ -1,7 +1,8 @@
 from app import app
+import db
 import view
-from db import db
 import admin
+import login_manager
 
 def main():
     app.run(debug=True)

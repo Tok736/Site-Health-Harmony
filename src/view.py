@@ -1,18 +1,32 @@
 from flask import render_template, flash
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_user
 
 from app import app
 from db import db
 from models import User, Doctor, Service, ServiceGroup
-from forms import SignUpForm
+from forms import SignInForm, SignUpForm
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
-@app.route("/sign_in")
+@app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():
-    return render_template("sign_in.html")
+    form = SignInForm()
+    
+    if form.validate_on_submit():
+        email = form.email.data
+        password = form.password.data
+        user = User.query.filter_by(email=email).first()
+
+        if user is not None and check_password_hash(user.password_hash, password):
+            flash("Авторизация успешна")
+            login_user(user)
+        else:
+            flash("Неправильный логин или пароль")
+
+    return render_template("sign_in.html", form=form)
 
 @app.route("/sign_up", methods=["GET", "POST"])
 def sign_up():

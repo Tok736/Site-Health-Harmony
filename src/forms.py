@@ -4,5 +4,10 @@ from wtforms.validators import DataRequired, Email, Length
 
 class SignUpForm(FlaskForm):
     email = EmailField("Имя", validators=[DataRequired(), Email()])
-    password = PasswordField("Пароль", validators=[DataRequired(), Length(8, 24)])
-    password_repeat = PasswordField("Повторите пароль", validators=[DataRequired(), Length(8, 24)])
+    password = PasswordField("Пароль", validators=[DataRequired()])
+    password_repeat = PasswordField("Повторите пароль", validators=[DataRequired()])
+
+class SignInForm(FlaskForm):
+    email = EmailField("Имя", validators=[DataRequired(), Email()])
+    password = PasswordField("Пароль", validators=[DataRequired()])
+

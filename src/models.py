@@ -1,15 +1,16 @@
 from sqlalchemy import Column, ForeignKey, Integer, String, Text, DateTime
 from sqlalchemy.sql import func 
 from sqlalchemy.orm import Relationship
+from flask_login import UserMixin
 
 from db import db
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = "user"
 
     id = Column(Integer, primary_key=True)
     email = Column(String(100), nullable=False)
-    password_hash = Column(String(100))
+    password_hash = Column(String(512))
 
     first_name = Column(String(100))
     second_name = Column(String(100))
